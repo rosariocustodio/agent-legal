@@ -29,12 +29,12 @@ document.addEventListener('DOMContentLoaded', () => {
   const toast = document.querySelector('div[role="status"]');
   if (toast) {
     const buyers = [
-      { name: 'María González', country: 'México', time: 'hace 3 minutos' },
-      { name: 'Dr. Sebastián Morales', country: 'Argentina', time: 'hace 5 minutos' },
-      { name: 'Abg. Catalina Herrera', country: 'Colombia', time: 'hace 2 minutos' },
-      { name: 'Carlos Mendoza', country: 'Chile', time: 'hace 7 minutos' },
-      { name: 'Dra. Patricia Lima', country: 'Perú', time: 'hace 4 minutos' },
-      { name: 'Andrés Villalba', country: 'Ecuador', time: 'hace 1 minuto' }
+      { name: 'Javier Navarro', country: 'Madrid', time: 'hace 3 minutos' },
+      { name: 'Dra. Carmen Morales', country: 'Barcelona', time: 'hace 5 minutos' },
+      { name: 'Carlos Fernández', country: 'Valencia', time: 'hace 2 minutos' },
+      { name: 'Abg. Lucía Romero', country: 'Sevilla', time: 'hace 7 minutos' },
+      { name: 'David Moreno', country: 'Bilbao', time: 'hace 4 minutos' },
+      { name: 'Elena Iglesias', country: 'Zaragoza', time: 'hace 1 minuto' }
     ];
 
     let buyerIndex = 0;
