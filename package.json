@@ -1,0 +1,12 @@
+{
+  "name": "agent-legal",
+  "version": "1.0.0",
+  "description": "Claude para Abogados - Guía de IA Jurídica LATAM 2026",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
