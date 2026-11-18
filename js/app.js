@@ -92,4 +92,40 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   });
+
+  // 4. Integração Hotmart Checkout com Fallback Inteligente
+  const directCheckoutUrl = 'https://pay.hotmart.com/J108539720K';
+  const checkoutButtons = document.querySelectorAll('a.hotmart-fb, a.hotmart__button-checkout, a[href*="pay.hotmart.com"]');
+
+  function fallbackToDirect() {
+    checkoutButtons.forEach(btn => {
+      btn.href = directCheckoutUrl;
+      btn.classList.remove('hotmart-fb', 'hotmart__button-checkout');
+      btn.target = '_blank';
+      btn.rel = 'noopener noreferrer';
+    });
+  }
+
+  // Se o script da Hotmart falhar ao carregar ou for bloqueado por adblocker:
+  if (window.__hotmartFailed) {
+    fallbackToDirect();
+  }
+
+  // Em telas pequenas / mobile (onde o widget não abre popup por design da Hotmart):
+  const isMobile = window.innerWidth <= 600 || /Android|iPhone|iPad|iPod|webOS|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+  if (isMobile) {
+    fallbackToDirect();
+  } else {
+    // No desktop: se o popup do Fancybox não abrir em até 600ms após o clique, redireciona para o checkout direto
+    checkoutButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        setTimeout(() => {
+          const popupOpen = document.querySelector('.fancybox-container, .fancybox-is-open, iframe[src*="hotmart.com"]');
+          if (!popupOpen) {
+            window.open(directCheckoutUrl, '_blank') || (window.location.href = directCheckoutUrl);
+          }
+        }, 600);
+      });
+    });
+  }
 });
